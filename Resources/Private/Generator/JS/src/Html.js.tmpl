@@ -1,0 +1,29 @@
+import React from 'react';
+import { string, object } from 'prop-types';
+import { FlowScript } from '@bytorsten/react';
+
+const Html = ({ content, state, title }) => (
+  <html lang="en">
+    <head>
+      <meta charSet="utf-8"/>
+      <title>{title}</title>
+      <script dangerouslySetInnerHTML={{
+        __html: `window.__FLOW_STATE__=${JSON.stringify(state).replace(/</g, '\\u003c')};`,
+      }} />
+      <FlowScript />
+    </head>
+    <body>
+      <div id="root" dangerouslySetInnerHTML={{__html: content}} />
+    </body>
+  </html>
+);
+
+
+Html.propTypes = {
+  content: string.isRequired,
+  state: object.isRequired,
+  title: string.isRequired
+};
+
+
+export default Html;

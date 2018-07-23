@@ -1,0 +1,24 @@
+import React from 'react';
+import { renderToString, renderToStaticMarkup } from 'react-dom/server';
+import { FlowProvider, FlowClient } from '@bytorsten/react';
+import { getDataFromTree } from '@bytorsten/react/server';
+
+import App from './src/App';
+import Html from './src/Html';
+
+export default async ({ context }) => {
+
+  const client = new FlowClient({ context });
+
+  const app = (
+    <FlowProvider client={client}>
+      <App />
+    </FlowProvider>
+  );
+
+  await getDataFromTree(app);
+  const content = renderToString(app);
+  const title = context.title || 'Title';
+  const html = <Html content={content} title={title} state={client.extract()} />
+  return `<!doctype html>\n${renderToStaticMarkup(html)}`;
+};

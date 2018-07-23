@@ -1,0 +1,18 @@
+import React, { Fragment } from 'react';
+import { Route, Router } from '@bytorsten/react';
+
+import Index from './routes/Index';
+
+const App = () => (
+  <Fragment>
+    <div>
+      <h1>Layout</h1>
+    </div>
+
+    <Router>
+      <Route action="index" component={Index} />
+    </Router>
+  </Fragment>
+);
+
+export default App;

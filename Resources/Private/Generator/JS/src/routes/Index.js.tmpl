@@ -1,0 +1,40 @@
+import React, { Component, Fragment } from 'react';
+import { Context } from '@bytorsten/react';
+
+export default class Index extends Component {
+
+  state = {
+    open: true
+  }
+
+  toggle = () => {
+    this.setState({
+      open: !this.state.open
+    });
+  }
+
+  render() {
+    const { open } = this.state;
+
+    return (
+      <Fragment>
+        <h2>A freshly created React template!</h2>
+        <p>Some data set by the controller:</p>
+
+        {open && (
+          <ul>
+            <Context>
+              {({ foos }) => foos.map((foo, index) => (
+                <li key={index}>{foo}</li>
+              ))}
+            </Context>
+          </ul>
+        )}
+
+        <button type="button" onClick={this.toggle}>
+          {open ? 'Close' : 'Open'}
+        </button>
+      </Fragment>
+    );
+  }
+}

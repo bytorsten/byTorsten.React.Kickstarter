@@ -1,0 +1,13 @@
+import React from 'react';
+import ReactDom from 'react-dom';
+import { FlowProvider, FlowClient } from '@bytorsten/react';
+import App from './src/App';
+
+const client = new FlowClient();
+client.hydrate(window.__FLOW_STATE__);
+
+ReactDom.hydrate((
+  <FlowProvider client={client}>
+    <App />
+  </FlowProvider>
+), document.getElementById('root'));

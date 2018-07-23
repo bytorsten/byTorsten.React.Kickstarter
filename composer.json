@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-react",
+    "name": "bytorsten/react-kickstarter",
+    "require": {
+        "bytorsten/react": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "byTorsten\\React\\Kickstarter\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "byTorsten.React.Kickstarter"
+        }
+    }
+}
