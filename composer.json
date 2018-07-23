@@ -1,5 +1,5 @@
 {
-    "description": "",
+    "description": "Enhance a flow package with the power of react",
     "type": "neos-react",
     "name": "bytorsten/react-kickstarter",
     "require": {
@@ -14,5 +14,8 @@
         "neos": {
             "package-key": "byTorsten.React.Kickstarter"
         }
+    },
+    "suggest": {
+        "neos/kickstarter": "Easy what to get a flow package up and running"
     }
 }

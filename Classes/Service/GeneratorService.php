@@ -187,7 +187,7 @@ class GeneratorService
 
         $content = $this->renderTemplate('resource://byTorsten.React.Kickstarter/Private/Generator/Views.yaml.tmpl', [
             'packageKey' => $package->getPackageKey(),
-            'path' => $reactPath === 'react' ? null : $reactPath
+            'path' => $reactPath === 'React' ? null : $reactPath
         ]);
 
         $this->generateFile($path, $content);
