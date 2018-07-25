@@ -8,7 +8,7 @@ import Html from './src/Html';
 
 export default async ({ context }) => {
 
-  const client = new FlowClient({ context });
+  const client = new FlowClient({ context, assets });
 
   const app = (
     <FlowProvider client={client}>
@@ -16,9 +16,16 @@ export default async ({ context }) => {
     </FlowProvider>
   );
 
+  const styles = Object.keys(assets).reduce((allStyles, assetName) => {
+    if (assetName.endsWith('.css')) {
+        allStyles.push(assets[assetName]);
+    }
+    return allStyles;
+  }, []);
+
   await getDataFromTree(app);
   const content = renderToString(app);
   const title = context.title || 'Title';
-  const html = <Html content={content} title={title} state={client.extract()} />
+  const html = <Html content={content} title={title} styles={styles} state={client.extract()} />
   return `<!doctype html>\n${renderToStaticMarkup(html)}`;
 };
