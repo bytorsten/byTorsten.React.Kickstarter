@@ -2,6 +2,13 @@
     "description": "Enhance a flow package with the power of react",
     "type": "neos-react",
     "name": "bytorsten/react-kickstarter",
+    "authors": [
+        {
+            "name": "Torsten Blindert",
+            "email": "info@by-torsten.com"
+        }
+    ],
+    "license": "MIT",
     "require": {
         "bytorsten/react": "*"
     },
