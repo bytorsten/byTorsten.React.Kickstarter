@@ -1,8 +1,8 @@
 import React from 'react';
-import { string, object, arrayOf } from 'prop-types';
+import { string, object } from 'prop-types';
 import { FlowScript } from '@bytorsten/react';
 
-const Html = ({ content, state, styles, title }) => (
+const Html = ({ content, state, title }) => (
   <html lang="en">
     <head>
       <meta charSet="utf-8"/>
@@ -11,10 +11,6 @@ const Html = ({ content, state, styles, title }) => (
         __html: `window.__FLOW_STATE__=${JSON.stringify(state).replace(/</g, '\\u003c')};`,
       }} />
       <FlowScript />
-
-      {styles.map(uri => (
-        <link key={uri} rel="stylesheet" href={uri} />
-      ))}
     </head>
     <body>
       <div id="root" dangerouslySetInnerHTML={{__html: content}} />
@@ -26,7 +22,6 @@ const Html = ({ content, state, styles, title }) => (
 Html.propTypes = {
   content: string.isRequired,
   state: object.isRequired,
-  styles: arrayOf(string).isRequired,
   title: string.isRequired
 };
 
